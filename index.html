@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>ThLoop | Ecossistema de Software, Automação & Eficiência Digital</title>
+  <meta name="description" content="A ThLoop conecta pessoas, processos e dados através de loops de feedback contínuos, inteligência artificial e automação de alta performance." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cyan: '#00f2fe',
+              blue: '#4facfe',
+              purple: '#7f00ff',
+              darkBg: '#0a0d14',
+              cardBg: '#121824',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0d14] text-gray-100 selection:bg-cyan-500 selection:text-black min-h-screen">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="glow-orb w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/20 top-0 -left-32 sm:-left-48"></div>
+  <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-purple-600/15 top-1/3 -right-32 sm:-right-60"></div>
+  <div class="glow-orb w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-blue-500/20 bottom-10 left-10 sm:left-1/3"></div>
+
+  <!-- Header / Navbar -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 glass-panel border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#inicio" class="flex items-center space-x-2.5 sm:space-x-3 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-105 transition-transform duration-300">
+          <i data-lucide="repeat" class="w-5 h-5 sm:w-6 sm:h-6 text-white animate-spin-slow"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight font-heading text-white">Th<span class="text-gradient">Loop</span></span>
+          <span class="text-[9px] sm:text-[10px] text-cyan-400 tracking-widest uppercase font-mono">Digital Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium text-gray-300">
+        <a href="#inicio" class="hover:text-cyan-400 transition-colors">Início</a>
+        <a href="#sobre" class="hover:text-cyan-400 transition-colors">Sobre</a>
+        <a href="#solucoes" class="hover:text-cyan-400 transition-colors">Soluções</a>
+        <a href="#diferenciais" class="hover:text-cyan-400 transition-colors">Diferenciais</a>
+        <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora ROI</a>
+        <a href="#depoimentos" class="hover:text-cyan-400 transition-colors">Casos de Sucesso</a>
+        <a href="#contato" class="hover:text-cyan-400 transition-colors">Contato</a>
+      </nav>
+
+      <!-- Action & Theme Controls -->
+      <div class="hidden md:flex items-center space-x-3 lg:space-x-4">
+        <button id="theme-toggle" aria-label="Alternar tema" class="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-gray-300">
+          <i id="theme-icon" data-lucide="sun" class="w-5 h-5"></i>
+        </button>
+        <button class="open-modal-btn btn-primary px-5 lg:px-6 py-2.5 rounded-xl text-sm font-semibold flex items-center space-x-2">
+          <span>Começar Agora</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Controls (Theme + Hamburger) -->
+      <div class="md:hidden flex items-center space-x-2">
+        <button id="mobile-menu-btn" aria-label="Abrir menu mobile" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-200 hover:text-white active:scale-95 transition-transform">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0d14]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-4 text-base font-medium shadow-2xl">
+      <a href="#inicio" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Início</a>
+      <a href="#sobre" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Sobre a ThLoop</a>
+      <a href="#solucoes" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Soluções</a>
+      <a href="#diferenciais" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Diferenciais</a>
+      <a href="#calculadora" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Calculadora ROI</a>
+      <a href="#depoimentos" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Casos de Sucesso</a>
+      <a href="#contato" class="block py-2 text-gray-200 hover:text-cyan-400 border-b border-white/5">Contato</a>
+      
+      <div class="pt-4 flex flex-col gap-3">
+        <button class="open-modal-btn btn-primary w-full py-3.5 rounded-xl font-semibold text-center flex items-center justify-center space-x-2">
+          <span>Agendar Demonstração</span>
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative pt-16 sm:pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-12 sm:py-20 overflow-hidden">
+      <!-- Interactive Background Canvas -->
+      <canvas id="hero-canvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full badge-tech text-xs sm:text-sm font-mono tracking-wide max-w-full">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping flex-shrink-0"></span>
+            <span class="truncate">⚡ Pluga no seu fluxo. Conecta no seu resultado.</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-heading tracking-tight leading-[1.15]">
+            Conectando Pessoas e Processos em <span class="text-gradient">Loops Contínuos</span> de Eficiência
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+            A <strong class="text-white">ThLoop</strong> elimina gargalos operacionais e transforma fluxos fragmentados em ecossistemas de software modernos, automações inteligentes de IA e integrações em tempo real.
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+            <button class="open-modal-btn btn-primary w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold flex items-center justify-center space-x-2 shadow-lg">
+              <span>Agendar Demonstração</span>
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </button>
+
+            <a href="#solucoes" class="btn-secondary w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold flex items-center justify-center space-x-2">
+              <span>Explorar Soluções</span>
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+          <!-- Trust highlights -->
+          <div class="pt-4 sm:pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-gray-400 font-mono">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+              <span>Segurança Enterprise</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+              <span>Integração Rápida</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="activity" class="w-4 h-4 text-purple-400"></i>
+              <span>99.98% Uptime</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Visual Showcase / Mockup -->
+        <div class="lg:col-span-5 relative mt-4 lg:mt-0">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Glass Workflow Graphic Card -->
+            <div class="glass-card rounded-2xl p-4 sm:p-6 relative z-10 shadow-2xl space-y-4 sm:space-y-6 border border-cyan-500/30 animate-float">
+              
+              <!-- Card Header -->
+              <div class="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                  <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                  <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                  <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+                  <span class="text-[11px] sm:text-xs font-mono text-gray-400 ml-1">ThLoop Engine v3.4</span>
+                </div>
+                <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-[11px] font-mono rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ONLINE</span>
+              </div>
+
+              <!-- Metrics Live Loop Simulation -->
+              <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                <div class="p-3 sm:p-4 rounded-xl bg-white/5 border border-white/5">
+                  <div class="text-[11px] sm:text-xs text-gray-400">Eficiência Operacional</div>
+                  <div class="text-xl sm:text-2xl font-bold text-cyan-400 mt-1 font-heading">+340%</div>
+                  <div class="text-[9px] sm:text-[10px] text-emerald-400 mt-1 flex items-center space-x-1">
+                    <i data-lucide="trending-up" class="w-3 h-3"></i>
+                    <span>Otimização real</span>
+                  </div>
+                </div>
+
+                <div class="p-3 sm:p-4 rounded-xl bg-white/5 border border-white/5">
+                  <div class="text-[11px] sm:text-xs text-gray-400">Tempo Resposta</div>
+                  <div class="text-xl sm:text-2xl font-bold text-purple-400 mt-1 font-heading">&lt; 4.2ms</div>
+                  <div class="text-[9px] sm:text-[10px] text-cyan-400 mt-1 flex items-center space-x-1">
+                    <i data-lucide="zap" class="w-3 h-3"></i>
+                    <span>Feedback ultra rápido</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Animated Process Node Loop -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-3">
+                <div class="text-xs font-semibold text-gray-300 flex items-center justify-between">
+                  <span>Fluxo Contínuo de Dados</span>
+                  <i data-lucide="refresh-cw" class="w-4 h-4 text-cyan-400 animate-spin"></i>
+                </div>
+                
+                <!-- Micro Nodes (Responsive Flow) -->
+                <div class="flex flex-col sm:flex-row items-center justify-between text-xs font-mono gap-2 sm:gap-1">
+                  <div class="w-full sm:w-auto text-center px-3 py-1.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">Entrada ERP</div>
+                  <i data-lucide="arrow-down" class="sm:hidden w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="arrow-right" class="hidden sm:block w-4 h-4 text-cyan-400"></i>
+                  <div class="w-full sm:w-auto text-center px-3 py-1.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">IA ThLoop</div>
+                  <i data-lucide="arrow-down" class="sm:hidden w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="arrow-right" class="hidden sm:block w-4 h-4 text-cyan-400"></i>
+                  <div class="w-full sm:w-auto text-center px-3 py-1.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Ação Automática</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs text-gray-400 font-mono pt-1">
+                <span>Loops Ativos: <strong>1.482/min</strong></span>
+                <span class="text-cyan-400">Zero Gargalos</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOBRE A THLOOP SECTION -->
+    <section id="sobre" class="py-16 sm:py-24 relative border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- About Description -->
+          <div class="lg:col-span-6 space-y-5 sm:space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>QUEM É A THLOOP</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-bold font-heading">
+              Reinventando a Eficiência Digital com <span class="text-gradient">Feedback Loops Inteligentes</span>
+            </h2>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              A <strong>ThLoop</strong> nasceu para resolver uma das maiores dores das empresas modernas: a fragmentação entre sistemas, equipes e decisões. Acreditamos que a tecnologia só cumpre seu papel quando se torna um ecossistema contínuo de aprendizado, automação e alto desempenho.
+            </p>
+
+            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+              Nossa missão é desenhar soluções de software sob medida e automações de ponta a ponta que capturam dados em tempo real, executam processos sem atrito e devolvem insights valiosos instantaneamente para o seu negócio evoluir sem parar.
+            </p>
+
+            <!-- Vision Mission Values Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-500/40 transition-colors">
+                <i data-lucide="target" class="w-5 h-5 text-cyan-400 mb-2"></i>
+                <h4 class="font-bold text-white text-sm">Missão</h4>
+                <p class="text-xs text-gray-400 mt-1">Conectar processos e pessoas com eficiência extrema.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/40 transition-colors">
+                <i data-lucide="eye" class="w-5 h-5 text-purple-400 mb-2"></i>
+                <h4 class="font-bold text-white text-sm">Visão</h4>
+                <p class="text-xs text-gray-400 mt-1">Ser o motor de ecossistemas autônomos globais.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-colors">
+                <i data-lucide="award" class="w-5 h-5 text-blue-400 mb-2"></i>
+                <h4 class="font-bold text-white text-sm">Valores</h4>
+                <p class="text-xs text-gray-400 mt-1">Agilidade, transparência e alta performance.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Stats & Metrics Counter Showcase -->
+          <div class="lg:col-span-6 mt-4 lg:mt-0">
+            <div class="glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/10 relative overflow-hidden">
+              <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              
+              <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
+                Impacto ThLoop em Números
+              </h3>
+
+              <div class="grid grid-cols-2 gap-3 sm:gap-6">
+                
+                <div class="p-3.5 sm:p-5 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <div class="text-2xl sm:text-4xl font-extrabold text-gradient font-heading counter-stat" data-target="450" data-suffix="+">0</div>
+                  <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1 sm:mt-2">Processos Automatizados</div>
+                  <div class="text-[10px] sm:text-xs text-gray-400 mt-0.5">Sem intervenção manual</div>
+                </div>
+
+                <div class="p-3.5 sm:p-5 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400 font-heading counter-stat" data-target="99.98" data-suffix="%" data-decimals="2">0</div>
+                  <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1 sm:mt-2">Uptime Resiliente</div>
+                  <div class="text-[10px] sm:text-xs text-gray-400 mt-0.5">Disponibilidade contínua</div>
+                </div>
+
+                <div class="p-3.5 sm:p-5 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <div class="text-2xl sm:text-4xl font-extrabold text-purple-400 font-heading counter-stat" data-target="5" data-suffix="x">0</div>
+                  <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1 sm:mt-2">Retorno Médio (ROI)</div>
+                  <div class="text-[10px] sm:text-xs text-gray-400 mt-0.5">Ganho de escala</div>
+                </div>
+
+                <div class="p-3.5 sm:p-5 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <div class="text-2xl sm:text-4xl font-extrabold text-blue-400 font-heading counter-stat" data-target="120" data-suffix="+">0</div>
+                  <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1 sm:mt-2">Empresas Atendidas</div>
+                  <div class="text-[10px] sm:text-xs text-gray-400 mt-0.5">Startups & Enterprises</div>
+                </div>
+
+              </div>
+
+              <!-- Quote Card -->
+              <div class="mt-4 sm:mt-6 p-3.5 sm:p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-200 flex items-start space-x-3">
+                <i data-lucide="quote" class="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                <p class="leading-relaxed">
+                  "O segredo da alta performance digital é reduzir o intervalo entre o dado gerado e a decisão executada. Na ThLoop, tornamos esse intervalo nulo."
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVIÇOS & SOLUÇÕES SECTION -->
+    <section id="solucoes" class="py-16 sm:py-24 relative bg-slate-950/50 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-mono">
+            <i data-lucide="cpu" class="w-4 h-4"></i>
+            <span>NOSSAS SOLUÇÕES</span>
+          </div>
+          <h2 class="text-2xl sm:text-5xl font-bold font-heading">
+            Produtos & Serviços para <span class="text-gradient">Escala Digital</span>
+          </h2>
+          <p class="text-gray-300 text-sm sm:text-base">
+            Da engenharia de software à automação autônoma com Inteligência Artificial.
+          </p>
+        </div>
+
+        <!-- Filter Tabs (Horizontal Swipe on Mobile) -->
+        <div class="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 my-8 sm:my-12 pb-2 sm:pb-0 justify-start sm:justify-center">
+          <button class="filter-btn active tab-btn whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all" data-filter="all">
+            Todos os Serviços
+          </button>
+          <button class="filter-btn tab-btn whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-cyan-400 text-xs sm:text-sm font-medium transition-all" data-filter="ia">
+            Automação & IA
+          </button>
+          <button class="filter-btn tab-btn whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-cyan-400 text-xs sm:text-sm font-medium transition-all" data-filter="cloud">
+            Nuvem & Infra
+          </button>
+          <button class="filter-btn tab-btn whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-cyan-400 text-xs sm:text-sm font-medium transition-all" data-filter="saas">
+            Ecossistemas SaaS
+          </button>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Card 1 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="ia">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
+              <i data-lucide="bot" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Automação Inteligente (GenAI + RPA)</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Substituição de tarefas repetitivas por agentes autônomos de IA que tomam decisões operacionais com extrema precisão.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i><span>Redução de 80% em erros manuais</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i><span>Integração com LLMs enterprise</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i><span>Monitoramento de fluxos 24/7</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="saas">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5">
+              <i data-lucide="layout-grid" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Ecossistema de Software sob Medida</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Desenvolvimento de plataformas web e mobile escaláveis com foco em experiência do usuário impecável e arquitetura limpa.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-blue-400"></i><span>Front-ends reativos & modernos</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-blue-400"></i><span>Back-ends distribuídos</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-blue-400"></i><span>Design system exclusivo</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="cloud">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+              <i data-lucide="workflow" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Plataformas de Integração (APIs)</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Conexão total entre sistemas legados, softwares SaaS e bancos de dados em um loop contínuo de sincronização instantânea.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i><span>APIs RESTful & GraphQL</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i><span>Event-Driven Architecture</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i><span>Sincronização instantânea</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="cloud">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5">
+              <i data-lucide="cloud-lightning" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Nuvem & Infraestrutura High-Performance</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Migração, orquestração Kubernetes e otimização de custos em nuvem com tolerância a falhas e alta disponibilidade.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i><span>AWS, GCP & Azure Native</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i><span>Infraestrutura como Código (IaC)</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i><span>Escalabilidade automática</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="ia">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+              <i data-lucide="line-chart" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Analytics & Dashboards em Tempo Real</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Visualizações estratégicas que transformam dados em painéis vivos para decisões executivas rápidas.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Métricas de feedback instantâneas</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Alertas preditivos por IA</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i><span>Relatórios automatizados</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="service-card glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="saas">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-5">
+              <i data-lucide="sliders" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-white mb-2 sm:mb-3">Consultoria em Eficiência Digital</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+              Mapeamento minucioso dos seus gargalos operacionais e desenho da jornada de modernização acelerada.
+            </p>
+            <ul class="space-y-2 text-xs text-gray-400 mb-6 font-mono">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-pink-400"></i><span>Auditoria de processos atuais</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-pink-400"></i><span>Roadmap tecnológico estruturado</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-pink-400"></i><span>Garantia de ROI acelerado</span></li>
+            </ul>
+            <button class="open-modal-btn text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center space-x-1 group">
+              <span>Solicitar proposta</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS SECTION -->
+    <section id="diferenciais" class="py-16 sm:py-24 relative border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-10 sm:mb-16">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-mono">
+            <i data-lucide="shield" class="w-4 h-4"></i>
+            <span>POR QUE A THLOOP</span>
+          </div>
+          <h2 class="text-2xl sm:text-5xl font-bold font-heading">
+            O Diferencial da Nossa <span class="text-gradient">Arquitetura de Loop</span>
+          </h2>
+          <p class="text-gray-300 text-sm sm:text-base">
+            Compare o modelo de desenvolvimento tradicional com o ecossistema contínuo da ThLoop.
+          </p>
+        </div>
+
+        <!-- Comparative Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+          
+          <!-- Traditional Model Card -->
+          <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-red-950/10 border border-red-500/20 space-y-5">
+            <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-red-500/20">
+              <span class="text-base sm:text-lg font-bold font-heading text-red-400">Modelo Tradicional</span>
+              <span class="px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-mono">Lento & Fragmentado</span>
+            </div>
+            
+            <ul class="space-y-3.5 text-xs sm:text-sm text-gray-300">
+              <li class="flex items-start space-x-3">
+                <i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+                <span>Sistemas isolados que não se comunicam e exigem digitação manual constante.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+                <span>Relatórios estáticos desatualizados no momento em que são exportados.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+                <span>Desenvolvimento rígido com meses até a primeira entrega funcional.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+                <span>Gargalos operacionais constantes e dependência de pessoas para tarefas mecânicas.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ThLoop Model Card (Highlighted) -->
+          <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border-2 border-cyan-500/50 space-y-5 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-white/10">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="repeat" class="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400 animate-spin-slow"></i>
+                <span class="text-base sm:text-xl font-bold font-heading text-white">Ecossistema ThLoop</span>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono font-bold border border-cyan-500/30">Feedback Contínuo</span>
+            </div>
+            
+            <ul class="space-y-3.5 text-xs sm:text-sm text-gray-200">
+              <li class="flex items-start space-x-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Loop de Integração Total:</strong> Dados fluem instantaneamente entre ERPs, CRMs e IA.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Analytics em Tempo Real:</strong> Dashboards vivos com métricas atualizadas a cada segundo.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Entregas Ágeis & Modulares:</strong> Primeiras automações operantes em poucas semanas.</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Automação Autônoma de IA:</strong> Equipe focada em estratégia enquanto a IA cuida do operacional.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CALCULADORA DE ROI E EFICIÊNCIA -->
+    <section id="calculadora" class="py-16 sm:py-24 relative bg-slate-950/80 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="glass-panel rounded-2xl sm:rounded-3xl p-6 sm:p-12 border border-cyan-500/30 shadow-2xl relative overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            
+            <div class="lg:col-span-6 space-y-5">
+              <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono">
+                <i data-lucide="calculator" class="w-4 h-4"></i>
+                <span>SIMULADOR INTERATIVO</span>
+              </div>
+
+              <h2 class="text-2xl sm:text-4xl font-bold font-heading">
+                Calcule a Economia da sua Empresa com a <span class="text-gradient">ThLoop</span>
+              </h2>
+
+              <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                Descubra quantas horas operacionais e recursos financeiros sua equipe economiza ao eliminar tarefas manuais com nossos loops de automação.
+              </p>
+
+              <!-- Sliders -->
+              <div class="space-y-5 pt-2">
+                <!-- Slider 1 -->
+                <div>
+                  <div class="flex justify-between text-xs sm:text-sm font-medium text-gray-300 mb-2">
+                    <span>Equipe Operacional:</span>
+                    <span id="calc-team-val" class="font-bold text-cyan-400 font-mono">15 pessoas</span>
+                  </div>
+                  <input id="calc-team-size" type="range" min="2" max="100" value="15" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400" />
+                </div>
+
+                <!-- Slider 2 -->
+                <div>
+                  <div class="flex justify-between text-xs sm:text-sm font-medium text-gray-300 mb-2">
+                    <span>Horas semanais manuais por pessoa:</span>
+                    <span id="calc-hours-val" class="font-bold text-purple-400 font-mono">12h / sem.</span>
+                  </div>
+                  <input id="calc-hours" type="range" min="2" max="30" value="12" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-400" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Calculation Output Box -->
+            <div class="lg:col-span-6 mt-2 lg:mt-0">
+              <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/90 border border-white/10 space-y-5 text-center lg:text-left">
+                <h3 class="text-xs font-mono text-gray-400 uppercase tracking-widest">Estimativa de Retorno Mensal</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                    <div class="text-xs text-gray-400">Horas Economizadas / Mês</div>
+                    <div id="calc-res-hours" class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-heading mt-1">507 hrs</div>
+                    <div class="text-[10px] sm:text-[11px] text-gray-400 mt-1">~65% de ganho direto</div>
+                  </div>
+
+                  <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                    <div class="text-xs text-gray-400">Economia Financeira Est.</div>
+                    <div id="calc-res-cost" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-heading mt-1">R$ 38.025</div>
+                    <div class="text-[10px] sm:text-[11px] text-gray-400 mt-1">Estimativa de custos reaproveitados</div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-white/10">
+                  <button class="open-modal-btn btn-primary w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2">
+                    <span>Quero Automatizar Minha Operação</span>
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS E PROVA SOCIAL -->
+    <section id="depoimentos" class="py-16 sm:py-24 relative border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-10 sm:mb-16">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>PROVA SOCIAL</span>
+          </div>
+          <h2 class="text-2xl sm:text-5xl font-bold font-heading">
+            O que Dizem Sobre a <span class="text-gradient">ThLoop</span>
+          </h2>
+          <p class="text-gray-300 text-sm sm:text-base">
+            Líderes de tecnologia e operações que transformaram seus resultados digitais.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Testimonial 1 -->
+          <div class="glass-card p-6 sm:p-8 rounded-2xl border border-white/10 space-y-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center space-x-1 text-amber-400">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-gray-300 text-xs sm:text-sm leading-relaxed italic">
+                "A ThLoop reestruturou toda a nossa esteira de integração de dados em nuvem. O tempo de resposta que antes levava minutos caiu para milissegundos."
+              </p>
+            </div>
+            <div class="flex items-center space-x-3.5 pt-4 border-t border-white/10">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                RC
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Rodrigo Cardozo</h4>
+                <p class="text-[11px] text-gray-400">CTO, FinTech Scale</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="glass-card p-6 sm:p-8 rounded-2xl border border-white/10 space-y-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center space-x-1 text-amber-400">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-gray-300 text-xs sm:text-sm leading-relaxed italic">
+                "Nossa equipe de suporte perdia mais de 20 horas por semana digitando chamados manualmente. Com a automação de IA da ThLoop, o fluxo roda sozinho com 100% de precisão."
+              </p>
+            </div>
+            <div class="flex items-center space-x-3.5 pt-4 border-t border-white/10">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm">
+                MS
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Mariana Santos</h4>
+                <p class="text-[11px] text-gray-400">Diretora de Operações, LogiHub</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="glass-card p-6 sm:p-8 rounded-2xl border border-white/10 space-y-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center space-x-1 text-amber-400">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-gray-300 text-xs sm:text-sm leading-relaxed italic">
+                "O design minimalista e a alta performance entregues nos surpreenderam. É raro encontrar uma parceira de tecnologia com tanta velocidade e rigor técnico."
+              </p>
+            </div>
+            <div class="flex items-center space-x-3.5 pt-4 border-t border-white/10">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">
+                FA
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Fernando Almeida</h4>
+                <p class="text-[11px] text-gray-400">Head de Produto, NextHealth</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO DE CONTATO & NEWSLETTER SECTION -->
+    <section id="contato" class="py-16 sm:py-24 relative bg-slate-950/80 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          <!-- Left Details -->
+          <div class="lg:col-span-5 space-y-6 sm:space-y-8">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>FALE COM NOSSOS ESPECIALISTAS</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-bold font-heading">
+              Pronto para Conectar sua Empresa ao <span class="text-gradient">Futuro Digital</span>?
+            </h2>
+
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Fale conosco para desenharmos uma proposta sob medida para os desafios da sua empresa. Retornamos em menos de 2 horas úteis.
+            </p>
+
+            <div class="space-y-4 sm:space-y-6 pt-2">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-xs text-gray-400">E-mail Direto</div>
+                  <div class="text-white text-sm font-medium">contato@thloop.com.br</div>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-3.5">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-xs text-gray-400">Atendimento / WhatsApp</div>
+                  <div class="text-white text-sm font-medium">+55 (11) 98765-4321</div>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-3.5">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] sm:text-xs text-gray-400">Sede Principal</div>
+                  <div class="text-white text-sm font-medium">São Paulo, SP - Atendimento Global</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Newsletter Card -->
+            <div class="p-5 sm:p-6 rounded-2xl glass-panel border border-white/10 space-y-3 pt-4">
+              <h4 class="text-xs sm:text-sm font-bold text-white flex items-center space-x-2">
+                <i data-lucide="bell" class="w-4 h-4 text-cyan-400"></i>
+                <span>Newsletter ThLoop Tech</span>
+              </h4>
+              <p class="text-xs text-gray-400">Receba novidades sobre IA, Engenharia de Software e Automação.</p>
+              <form onsubmit="event.preventDefault(); alert('Inscrição na newsletter realizada com sucesso!');" class="flex flex-col sm:flex-row gap-2">
+                <input type="email" required placeholder="Seu melhor e-mail" class="w-full sm:flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400" />
+                <button type="submit" class="btn-primary px-4 py-2.5 rounded-xl text-xs font-semibold">Assinar</button>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Right Contact Form -->
+          <div class="lg:col-span-7">
+            <div class="glass-panel p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl relative">
+              
+              <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-5 sm:mb-6">Envie uma Mensagem</h3>
+
+              <form id="contact-form" class="space-y-4 sm:space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1.5">Seu Nome *</label>
+                    <input type="text" required placeholder="Ex: Carlos Silva" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1.5">E-mail Corporativo *</label>
+                    <input type="email" required placeholder="carlos@empresa.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1.5">Nome da Empresa</label>
+                    <input type="text" placeholder="Sua Empresa S.A." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1.5">Serviço de Interesse</label>
+                    <select class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                      <option>Automação Inteligente (GenAI / RPA)</option>
+                      <option>Ecossistema de Software sob Medida</option>
+                      <option>Plataforma de Integração & APIs</option>
+                      <option>Nuvem & Infraestrutura High-Performance</option>
+                      <option>Analytics em Tempo Real</option>
+                      <option>Consultoria Geral em Eficiência</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-medium text-gray-300 mb-1.5">Descreva seu projeto ou desafio *</label>
+                  <textarea rows="4" required placeholder="Como a ThLoop pode ajudar sua empresa?" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center space-x-2 shadow-xl">
+                  <span>Enviar Solicitação</span>
+                  <i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                </button>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ (FOOTER) -->
+  <footer class="bg-[#06080d] border-t border-white/10 py-12 sm:py-16 text-gray-400 text-sm relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="#inicio" class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-purple-600 flex items-center justify-center shadow-lg">
+              <i data-lucide="repeat" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-xl sm:text-2xl font-bold font-heading text-white">Th<span class="text-gradient">Loop</span></span>
+          </a>
+          <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+            Conectando pessoas, processos e dados em loops contínuos de eficiência digital e inteligência operacional.
+          </p>
+          <div class="flex space-x-3 pt-1">
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="Twitter / X" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links 1 -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3 font-heading">Navegação</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#inicio" class="hover:text-cyan-400 transition-colors">Início</a></li>
+            <li><a href="#sobre" class="hover:text-cyan-400 transition-colors">Sobre a ThLoop</a></li>
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Serviços & Soluções</a></li>
+            <li><a href="#diferenciais" class="hover:text-cyan-400 transition-colors">Diferenciais</a></li>
+            <li><a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora ROI</a></li>
+          </ul>
+        </div>
+
+        <!-- Links 2 -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3 font-heading">Soluções</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Automação Inteligente</a></li>
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Software sob Medida</a></li>
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Integração de APIs</a></li>
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Nuvem & Kubernetes</a></li>
+            <li><a href="#solucoes" class="hover:text-cyan-400 transition-colors">Analytics em Tempo Real</a></li>
+          </ul>
+        </div>
+
+        <!-- Links 3 -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3 font-heading">Legal & Suporte</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#" class="hover:text-cyan-400 transition-colors">Termos de Uso</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition-colors">Política de Privacidade</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition-colors">Segurança de Dados</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition-colors">Central de Ajuda</a></li>
+            <li><a href="#contato" class="hover:text-cyan-400 transition-colors">Fale Conosco</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3 text-center sm:text-left">
+        <div>
+          © 2026 <strong>ThLoop Inc.</strong> Todos os direitos reservados.
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-gray-400">Status dos Serviços: <span class="text-emerald-400 font-mono">100% Normal</span></a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- DEMO MODAL DIALOG (Mobile Scrollable) -->
+  <div id="modal-demo" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full max-w-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-cyan-500/40 relative shadow-2xl space-y-4 sm:space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close button -->
+      <button id="close-modal-btn" aria-label="Fechar modal" class="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-1.5">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>DEMONSTRAÇÃO PERSONALIZADA</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">Agendar Demonstração ThLoop</h3>
+        <p class="text-xs text-gray-300">Preencha os dados abaixo e nosso time técnico entrará em contato.</p>
+      </div>
+
+      <form id="modal-form" class="space-y-3.5 sm:space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-1">Seu Nome Completo *</label>
+          <input type="text" required placeholder="Ex: Ana Maria" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-1">E-mail Profissional *</label>
+          <input type="email" required placeholder="ana@suaempresa.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-1">Telefone / WhatsApp *</label>
+          <input type="tel" required placeholder="(11) 99999-9999" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-1">Desafio atual da operação</label>
+          <select class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+            <option>Sistemas desconectados / Gargalos manuais</option>
+            <option>Lentidão no fluxo de decisões e dados</option>
+            <option>Necessidade de automação autônoma de IA</option>
+            <option>Desenvolvimento de novo software SaaS sob medida</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2">
+          <span>Confirmar Agendamento</span>
+          <i data-lucide="check" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Custom JavaScript File -->
+  <script src="script.js"></script>
+
+</body>
+</html>

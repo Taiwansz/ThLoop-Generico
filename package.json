@@ -1,0 +1,21 @@
+{
+  "name": "thloop-website",
+  "version": "1.0.0",
+  "description": "Site moderno, elegante e completo para a empresa ThLoop",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static build complete'",
+    "deploy": "npx vercel --prod"
+  },
+  "keywords": [
+    "thloop",
+    "landing-page",
+    "vercel",
+    "software-ecosystem",
+    "automation",
+    "tailwind"
+  ],
+  "author": "ThLoop Inc.",
+  "license": "MIT"
+}
